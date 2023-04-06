@@ -1,6 +1,6 @@
-import './index.css'
-
 import Header from '../Header'
+
+import './index.css'
 
 const Home = () => (
   <>
@@ -9,9 +9,9 @@ const Home = () => (
       <div className="home-content">
         <h1 className="home-heading">Clothes That Get YOU Noticed</h1>
         <img
-          className="home-mobile-img"
           src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-img.png"
           alt="clothes that get you noticed"
+          className="home-mobile-img"
         />
         <p className="home-description">
           Fashion is part of the daily air and it does not quite help that it
@@ -25,9 +25,9 @@ const Home = () => (
         </button>
       </div>
       <img
-        className="home-desktop-img"
         src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-img.png"
         alt="clothes that get you noticed"
+        className="home-desktop-img"
       />
     </div>
   </>

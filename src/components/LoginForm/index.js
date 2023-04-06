@@ -1,17 +1,31 @@
-import './index.css'
-
 import {Component} from 'react'
+
+import './index.css'
 
 class LoginForm extends Component {
   state = {
     username: '',
     password: '',
-    message: '',
+    showSubmitError: false,
+    errorMsg: '',
+  }
+
+  onChangeUsername = event => {
+    this.setState({username: event.target.value})
+  }
+
+  onChangePassword = event => {
+    this.setState({password: event.target.value})
   }
 
   onSubmitSuccess = () => {
     const {history} = this.props
+
     history.replace('/')
+  }
+
+  onSubmitFailure = errorMsg => {
+    this.setState({showSubmitError: true, errorMsg})
   }
 
   submitForm = async event => {
@@ -23,41 +37,13 @@ class LoginForm extends Component {
       method: 'POST',
       body: JSON.stringify(userDetails),
     }
-
     const response = await fetch(url, options)
-    console.log(response)
+    const data = await response.json()
     if (response.ok === true) {
       this.onSubmitSuccess()
     } else {
-      this.setState({message: "* Username and Password didn't match"})
+      this.onSubmitFailure(data.error_msg)
     }
-  }
-
-  onChangeUsername = event => {
-    this.setState({username: event.target.value})
-  }
-
-  onChangePassword = event => {
-    this.setState({password: event.target.value})
-  }
-
-  renderUsernameField = () => {
-    const {username} = this.state
-    return (
-      <>
-        <label htmlFor="username" className="input-label">
-          USERNAME
-        </label>
-        <input
-          id="username"
-          className="username-input-field"
-          type="text"
-          value={username}
-          placeholder="Username"
-          onChange={this.onChangeUsername}
-        />
-      </>
-    )
   }
 
   renderPasswordField = () => {
@@ -65,39 +51,59 @@ class LoginForm extends Component {
 
     return (
       <>
-        <label htmlFor="password" className="input-label">
+        <label className="input-label" htmlFor="password">
           PASSWORD
         </label>
         <input
+          type="password"
           id="password"
           className="password-input-field"
-          type="password"
           value={password}
-          placeholder="Password"
           onChange={this.onChangePassword}
+          placeholder="Password"
+        />
+      </>
+    )
+  }
+
+  renderUsernameField = () => {
+    const {username} = this.state
+
+    return (
+      <>
+        <label className="input-label" htmlFor="username">
+          USERNAME
+        </label>
+        <input
+          type="text"
+          id="username"
+          className="username-input-field"
+          value={username}
+          onChange={this.onChangeUsername}
+          placeholder="Username"
         />
       </>
     )
   }
 
   render() {
-    const {message} = this.state
+    const {showSubmitError, errorMsg} = this.state
     return (
       <div className="login-form-container">
         <img
-          className="login-website-logo-mobile-image"
           src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+          className="login-website-logo-mobile-img"
           alt="website logo"
         />
         <img
-          className="login-image"
           src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png"
+          className="login-img"
           alt="website login"
         />
         <form className="form-container" onSubmit={this.submitForm}>
           <img
-            className="login-website-logo-desktop-image"
             src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png"
+            className="login-website-logo-desktop-img"
             alt="website logo"
           />
           <div className="input-container">{this.renderUsernameField()}</div>
@@ -105,7 +111,7 @@ class LoginForm extends Component {
           <button type="submit" className="login-button">
             Login
           </button>
-          <p className="error-message">{message}</p>
+          {showSubmitError && <p className="error-message">*{errorMsg}</p>}
         </form>
       </div>
     )

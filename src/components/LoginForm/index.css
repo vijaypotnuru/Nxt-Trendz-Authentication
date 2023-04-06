@@ -8,6 +8,7 @@
   max-width: 1110px;
   margin: auto;
 }
+
 @media screen and (min-width: 992px) {
   .login-form-container {
     flex-direction: row;
@@ -15,22 +16,24 @@
   }
 }
 
-.login-website-logo-mobile-image {
+.login-website-logo-mobile-img {
   width: 165px;
   margin-top: 50px;
   margin-bottom: 35px;
 }
+
 @media screen and (min-width: 992px) {
-  .login-website-logo-mobile-image {
+  .login-website-logo-mobile-img {
     display: none;
   }
 }
 
-.login-image {
+.login-img {
   width: 278px;
 }
+
 @media screen and (min-width: 992px) {
-  .login-image {
+  .login-img {
     width: 60%;
     max-width: 524px;
     flex-shrink: 1;
@@ -38,11 +41,12 @@
   }
 }
 
-.login-website-logo-desktop-image {
+.login-website-logo-desktop-img {
   width: 185px;
 }
+
 @media screen and (max-width: 991px) {
-  .login-website-logo-desktop-image {
+  .login-website-logo-desktop-img {
     display: none;
   }
 }
@@ -51,16 +55,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   padding: 20px;
   border-radius: 8px;
+  width: 100%;
   max-width: 350px;
 }
+
 @media screen and (min-width: 992px) {
   .form-container {
-    flex-shrink: 0;
     width: 350px;
-    box-shadow: 0px 8px 40px #07070714;
+    flex-shrink: 0;
+    box-shadow: 0px 8px 40px rgba(7, 7, 7, 0.08);
     padding: 64px 48px 64px 48px;
   }
 }
@@ -73,43 +78,41 @@
 }
 
 .input-label {
-  color: #475569;
-  font-size: 12px;
+  margin-bottom: 0px;
   font-family: 'Roboto';
   font-weight: bold;
+  font-size: 12px;
   line-height: 16px;
-  margin-bottom: 0px;
+  color: #475569;
 }
 
 .username-input-field {
-  color: #64748b;
   font-size: 14px;
-  font-family: 'Roboto';
   height: 40px;
   border: 1px solid #d7dfe9;
   background-color: #e2e8f0;
+  color: #64748b;
   border-radius: 2px;
   margin-top: 5px;
   padding: 8px 16px 8px 16px;
 }
 
 .password-input-field {
-  color: #64748b;
   font-size: 14px;
-  font-family: 'Roboto';
   height: 40px;
   border: 1px solid #d7dfe9;
   background-color: #e2e8f0;
+  color: #64748b;
   border-radius: 2px;
   margin-top: 5px;
   padding: 8px 16px 8px 16px;
 }
 
 .login-button {
-  color: #ffffff;
-  font-size: 14px;
   font-family: 'Roboto';
-  font-weight: 'bold';
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffffff;
   height: 40px;
   width: 100%;
   margin-top: 20px;
@@ -118,6 +121,7 @@
   border-radius: 8px;
   border: none;
   cursor: pointer;
+  outline: none;
 }
 
 .error-message {
